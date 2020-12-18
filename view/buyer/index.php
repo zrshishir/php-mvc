@@ -2,7 +2,7 @@
     <div style="text-align: right; margin: 20px 0px 10px;">
         <a id="btnAddAction" href="index.php?action=buyer-add"><img src="view/image/icon-add.png" />Add buyer</a>
     </div>
-    <div class="title">
+    <div>
         <table cellpadding="10" cellspacing="1">
             <thead>
                 <tr>
