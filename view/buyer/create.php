@@ -1,7 +1,13 @@
 <?php require_once "view/header.php"; ?>
 
 <form name="frmAdd" method="post" action="" id="frmAdd">
-    <div id="mail-status"></div>
+    <div id="validity-message">
+        <?php
+            if($validity['resp_code'] == 1){
+                echo $validity['message'];
+            }
+        ?>
+    </div>
     <div>
         <label style="padding-top: 20px;">Amount</label> 
         <span id="amount-info" class="info"></span><br /> 
@@ -33,12 +39,6 @@
     </div>
 
     <div>
-        <label style="padding-top: 20px;">Buyer IP</label> 
-        <span id="buyer-ip-info" class="info"></span><br /> 
-        <input type="text" name="buyer_ip" id="buyer-ip" class="demoInputBox">
-    </div>
-
-    <div>
         <label style="padding-top: 20px;">Note</label> 
         <span id="note-info" class="info"></span><br /> 
         <input type="text" name="note" id="note" class="demoInputBox">
@@ -57,17 +57,11 @@
     </div>
 
     <div>
-        <label style="padding-top: 20px;">Entry At</label> 
-        <span id="entry-at-info" class="info"></span><br /> 
-        <input type="text" name="entry_at" id="entry-at" class="demoInputBox">
-    </div>
-
-    <div>
         <label style="padding-top: 20px;">Entry By</label> 
         <span id="entry-by-info" class="info"></span><br /> 
         <input type="text" name="entry_by" id="entry-by" class="demoInputBox">
     </div>
-    
+    <br/>
     <div>
         <input type="submit" name="add" id="btnSubmit" value="Add" />
     </div>

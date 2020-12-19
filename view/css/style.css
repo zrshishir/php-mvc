@@ -2,3 +2,6 @@
 .title {   
     text-align: center;
 }
+#validity-message{
+    color: crimson;
+}

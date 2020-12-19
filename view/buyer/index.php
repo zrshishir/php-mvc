@@ -1,6 +1,6 @@
 <?php require_once "view/header.php"; ?>
     <div style="text-align: right; margin: 20px 0px 10px;">
-        <a id="btnAddAction" href="index.php?action=buyer-add"><img src="view/image/icon-add.png" />Add buyer</a>
+        <a id="btnAddAction" href="index.php?action=buyer-add">Add buyer</a>
     </div>
     <div>
         <table cellpadding="10" cellspacing="1">
@@ -16,10 +16,9 @@
                     <th><strong>Note</strong></th>
                     <th><strong>City</strong></th>
                     <th><strong>Phone</strong></th>
+                    <th><strong>Hash Key</strong></th>
                     <th><strong>Entry Date</strong></th>
                     <th><strong>Entry by</strong></th>
-                    <th><strong>Action</strong></th>
-
                 </tr>
             </thead>
             <tbody>

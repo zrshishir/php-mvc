@@ -1,24 +1,29 @@
 <?php
-require_once('config/db_config.php');
+
 class DatabaseConnection {
-    private $host;
-    private $user;
-    private $password;
-    private $database;
+    private $host = 'localhost';
+    private $user = 'root';
+    private $password = 'password';
+    private $database = 'php-mvc';
     private $connection;
 
     public function __construct(){
         $this->connection = $this->databaseConnection();
     }
 
-    private function databaseConnection(){
-        $config_credentials = include('config/db_config.php');
-        $connection = mysqli_connect(
-                $this->host = $config_credentials['host'],
-                $this->user = $config_credentials['user'],
-                $this->password = $config_credentials['password'],
-                $this->database = $config_credentials['database']
-            );
+    public function allDataQuery($query) {
+        $result = $this->connection->query($query);  
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $resultset[] = $row;
+            }
+        }
+        return $resultset;
+    }
+
+    public function databaseConnection(){
+        $connection = mysqli_connect($this->host, $this->user, $this->password, $this->database);
         return $connection;
     }
 
@@ -34,7 +39,7 @@ class DatabaseConnection {
     }
 
     public function insert($query, $param_type, $param_value_array) {
-        $sql = $this->conn->prepare($query);
+        $sql = $this->connection->prepare($query);
         $this->bindQueryParams($sql, $param_type, $param_value_array);
         $sql->execute();
         $insertId = $sql->insert_id;
