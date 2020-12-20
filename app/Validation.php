@@ -18,4 +18,16 @@ class Validation {
             return ['resp_code' => 1, 'code'=> 200, 'message' => $message];
         }
     }
+
+    public function searchValidator($data){
+        $message = "";
+        $message .= (empty($data['from_date'])) ? "from date should not be null. " : "" ;
+        $message .= (empty($data['to_date'])) ? "to date should not be null. " : "" ;
+
+        if(empty($message)){
+            return ['resp_code' => 0, 'code'=> 422, 'message' => 'ok'];
+        }else{
+            return ['resp_code' => 1, 'code'=> 200, 'message' => $message];
+        }
+    }
 }

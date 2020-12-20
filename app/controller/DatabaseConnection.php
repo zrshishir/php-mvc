@@ -22,6 +22,23 @@ class DatabaseConnection {
         return $resultset;
     }
 
+    public function searchQuery($query, $param_type, $param_value_array){
+        $sql = $this->connection->prepare($query);
+        $this->bindQueryParams($sql, $param_type, $param_value_array);
+        $sql->execute();
+        $result = $sql->get_result();
+        
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $resultset[] = $row;
+            }
+        }
+        
+        if(!empty($resultset)) {
+            return $resultset;
+        }
+    }
+
     public function databaseConnection(){
         $connection = mysqli_connect($this->host, $this->user, $this->password, $this->database);
         return $connection;

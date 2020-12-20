@@ -13,6 +13,18 @@ class Buyer {
         return $result;
     }
 
+    public function search($data){
+        $query = "SELECT * FROM buyers WHERE entry_at >= ? AND entry_at <= ?";
+        $paramType = "ss";
+        $paramValue = array(
+            $data['from_date'],
+            $data['to_date']
+        );
+        
+        $result = $this->dbHandle->searchQuery($query, $paramType, $paramValue);
+        return $result;
+    }
+
     public function create($data){
         $query = "INSERT INTO buyers (amount, buyer, receipt_id, items, buyer_email, buyer_ip, note, city, phone, hash_key, entry_at, entry_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $paramType = "isssssssissi";

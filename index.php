@@ -8,10 +8,10 @@ if(! empty($_GET["action"])){
     $action = $_GET["action"];
 }
 
+var_dump($_POST);
 switch($action){
     case "buyer-add":
         if (isset($_POST['add'])) {
-            // var_dump($_SERVER);
             // var_dump($_COOKIE['buyer_creation']);
             $validation = new Validation();
             $validity = $validation->validator($_POST);
@@ -23,6 +23,7 @@ switch($action){
                     $buyerId = $buyer->create($_POST);
                     if($buyerId){
                         setcookie('buyer_creation', 110105, time()+60);
+                        $result = $buyer->index();
                         require_once('view/buyer/index.php');
                         break;
                     }
@@ -33,13 +34,40 @@ switch($action){
                     break;
                 }
             }
+            require_once("view/buyer/create.php");
+        }else{
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                return 'shishir';
+                //check if its an ajax request, exit if not
+                if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+                
+                    //exit script outputting json data
+                    $output = json_encode(
+                            array(
+                                'type' => 'error',
+                                'text' => 'Request must come from Ajax'
+                    ));
+                
+                    return ($output);
+                    break;
+                }
+            }
+            require_once('view/buyer/create.php');
         }
-        require_once("view/buyer/create.php");
+        
     break;
 
     default:
             $buyer = new Buyer();
-            $result = $buyer->index();
+            if($_GET['search'] == 'Search'){
+                $validation = new Validation();
+                $validity = $validation->searchValidator($_GET);
+                if($validity['resp_code'] == 0){
+                    $result = $buyer->search($_GET);
+                }
+            }else{
+                $result = $buyer->index();
+            }
             require_once('view/buyer/index.php');
     break;
 }
