@@ -123,7 +123,8 @@
 
         $("#receiptForm").on('submit', function(e){
             e.preventDefault();
-            // var valid = validate();
+            var valid = validate();
+            if(valid){
                 $.ajax({
                     type: 'post',
                     url: 'api.php',
@@ -138,7 +139,8 @@
                           $('#receiptForm').trigger("reset");
                       }
                     }
-                  });        
+                  }); 
+            }       
             
         });
         $("#resetButton").on('click', function(){

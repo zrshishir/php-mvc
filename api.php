@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo json_encode(['resp_code' => 0, 'code'=> 200, 'message' => 'Your receipt has been generated successfully.']);
             }
         }else{
-            echo json_encode(['resp_code' => 1, 'code'=> 406, 'message' => 'You can not generate another receipt within 24 hours']);
+            echo json_encode(['resp_code' => 1, 'code'=> 406, 'message' => 'You can not generate another receipt within 1 minutes']);
             
         }
     }

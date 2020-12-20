@@ -29,7 +29,7 @@ switch($action){
                     }
                 }else{
                     $validity['resp_code'] = 1;
-                    $validity['message'] = 'you can not create another one within 1 minutes.';
+                    $validity['message'] = 'you can not create another one within 24 hours.';
                     require_once('view/buyer/create.php');
                     break;
                 }
