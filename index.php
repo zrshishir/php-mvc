@@ -8,7 +8,7 @@ if(! empty($_GET["action"])){
     $action = $_GET["action"];
 }
 
-var_dump($_POST);
+
 switch($action){
     case "buyer-add":
         if (isset($_POST['add'])) {
@@ -29,32 +29,13 @@ switch($action){
                     }
                 }else{
                     $validity['resp_code'] = 1;
-                    $validity['message'] = 'you can not create another one within 24 hours.';
+                    $validity['message'] = 'you can not create another one within 1 minutes.';
                     require_once('view/buyer/create.php');
                     break;
                 }
             }
-            require_once("view/buyer/create.php");
-        }else{
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                return 'shishir';
-                //check if its an ajax request, exit if not
-                if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-                
-                    //exit script outputting json data
-                    $output = json_encode(
-                            array(
-                                'type' => 'error',
-                                'text' => 'Request must come from Ajax'
-                    ));
-                
-                    return ($output);
-                    break;
-                }
-            }
-            require_once('view/buyer/create.php');
         }
-        
+        require_once("view/buyer/create.php");
     break;
 
     default:

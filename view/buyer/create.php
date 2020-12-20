@@ -67,7 +67,10 @@
         </div>
         <br/>
         <div>
-            <input type="submit" value="Add" />
+            <button type="submit">Generate</button>
+            <button type="reset" id="resetButton">Reset</button>
+            <!-- <input type="submit" value="Generate" />
+            <input type="button" id="resetButton" value="Reset" /> -->
             <!-- <input type="submit" name="add" id="btnSubmit" value="Add" /> -->
         </div>
         </div>

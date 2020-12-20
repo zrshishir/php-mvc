@@ -4,9 +4,7 @@
             return regex.test(email);
         }
 
-        $("#receiptForm").on('submit', function(){
-            
-        })
+       
         
         function validate() {
             var valid = true;   
@@ -125,17 +123,26 @@
 
         $("#receiptForm").on('submit', function(e){
             e.preventDefault();
-            var valid = validate();
-            if(valid){
+            // var valid = validate();
                 $.ajax({
                     type: 'post',
-                    url: 'index.php',
+                    url: 'api.php',
                     data: $('#receiptForm').serialize(),
                     success: function (response) {
-                      console.log(response);
+                      if(response.resp_code){
+                          $("#validity-message").html(response.message);
+                          $("#validity-message").css('color', '#FF0000');
+                      }else{
+                          $("#validity-message").html(response.message);
+                          $("#validity-message").css('color', '#008000');
+                          $('#receiptForm').trigger("reset");
+                      }
                     }
                   });        
-            }
+            
+        });
+        $("#resetButton").on('click', function(){
+            $("#receiptForm").trigger('reset');
         });
 
     

@@ -14,11 +14,12 @@ class Buyer {
     }
 
     public function search($data){
-        $query = "SELECT * FROM buyers WHERE entry_at >= ? AND entry_at <= ?";
-        $paramType = "ss";
+        $query = "SELECT * FROM buyers WHERE entry_at >= ? AND entry_at <= ? AND entry_by = ?";
+        $paramType = "ssi";
         $paramValue = array(
             $data['from_date'],
-            $data['to_date']
+            $data['to_date'],
+            $data['entry_by']
         );
         
         $result = $this->dbHandle->searchQuery($query, $paramType, $paramValue);

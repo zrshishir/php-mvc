@@ -13,9 +13,9 @@ class Validation {
         $message .= ( empty($data['entry_by'])) ? "entry by shouldn't be null. " : (is_numeric($data['entry_by']) ? '' : 'entry by field should be numeric. ');
         
         if(empty($message)){
-            return ['resp_code' => 0, 'code'=> 422, 'message' => 'ok'];
+            return ['resp_code' => 0, 'code'=> 200, 'message' => 'ok'];
         }else{
-            return ['resp_code' => 1, 'code'=> 200, 'message' => $message];
+            return ['resp_code' => 1, 'code'=> 422, 'message' => $message];
         }
     }
 
@@ -23,6 +23,7 @@ class Validation {
         $message = "";
         $message .= (empty($data['from_date'])) ? "from date should not be null. " : "" ;
         $message .= (empty($data['to_date'])) ? "to date should not be null. " : "" ;
+        $message .= (empty($data['entry_by'])) ? "to date should not be null. " : "" ;
 
         if(empty($message)){
             return ['resp_code' => 0, 'code'=> 422, 'message' => 'ok'];
