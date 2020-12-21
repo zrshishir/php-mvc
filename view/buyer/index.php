@@ -1,12 +1,12 @@
 <?php require_once "view/header.php"; ?>
-    <div style="text-align: left; margin: 20px 0px 10px; padding-left: 120px;">
+    <div style="text-align: left; margin: 20px 0px 10px; padding-left: 250px;">
         <?php 
             if(isset($_GET['search'])){
                echo '<a id="btnAddAction" href="index.php">back</a>';
             }
         ?>
     </div>
-    <div style="padding-left: 120px;">
+    <div style="padding-left: 250px;">
         <form action="" method="get">
             <div>
                 <label style="padding-top: 20px; margin-left: 20px;">User ID</label> 

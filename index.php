@@ -3,7 +3,7 @@ require_once('config/db_config.php');
 require_once('app/model/Buyer.php');
 require_once('app/Validation.php');
 
-
+$action = "";
 if(! empty($_GET["action"])){
     $action = $_GET["action"];
 }
