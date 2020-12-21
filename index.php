@@ -12,7 +12,6 @@ if(! empty($_GET["action"])){
 switch($action){
     case "buyer-add":
         if (isset($_POST['add'])) {
-            // var_dump($_COOKIE['buyer_creation']);
             $validation = new Validation();
             $validity = $validation->validator($_POST);
             if($validity['resp_code'] == 1){
@@ -40,7 +39,7 @@ switch($action){
 
     default:
             $buyer = new Buyer();
-            if($_GET['search'] == 'Search'){
+            if(isset($_GET['search'])){
                 $validation = new Validation();
                 $validity = $validation->searchValidator($_GET);
                 if($validity['resp_code'] == 0){

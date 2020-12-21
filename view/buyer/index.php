@@ -25,7 +25,7 @@
             </div>
             <div style="margin-left: 20px;" id="validity-message">
                 <?php
-                    if($validity['resp_code'] == 1){
+                    if(isset($validity['resp_code'])){
                         echo $validity['message'] . "<br/>";
                     }
                 ?>
