@@ -16,4 +16,4 @@ The installation is pretty simple. There is nothing like composer update. You wi
     - Now execute the index.php file which is in your project root directory.
 
 2. LEMP stack installation:
-    -
+    - Make ready your linux with nginx, mysql and php. You can follow the link [LEMP stack installation on ubunut 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04)
