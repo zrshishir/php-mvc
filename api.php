@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($_COOKIE['buyer_creation'] != 110105){
             $buyerId = $buyer->create($_POST);
             if($buyerId){
-                setcookie('buyer_creation', 110105, time()+60);
+                setcookie('buyer_creation', 110105, time()+86400);
                 echo json_encode(['resp_code' => 0, 'code'=> 200, 'message' => 'Your receipt has been generated successfully.']);
             }
         }else{
-            echo json_encode(['resp_code' => 1, 'code'=> 406, 'message' => 'You can not generate another receipt within 1 minutes']);
+            echo json_encode(['resp_code' => 1, 'code'=> 406, 'message' => 'You can not generate another receipt within 24 hours']);
             
         }
     }

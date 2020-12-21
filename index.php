@@ -22,7 +22,7 @@ switch($action){
                 if($_COOKIE['buyer_creation'] != 110105){
                     $buyerId = $buyer->create($_POST);
                     if($buyerId){
-                        setcookie('buyer_creation', 110105, time()+60);
+                        setcookie('buyer_creation', 110105, time()+86400);
                         $result = $buyer->index();
                         require_once('view/buyer/index.php');
                         break;
