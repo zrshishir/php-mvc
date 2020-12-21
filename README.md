@@ -73,4 +73,6 @@ The installation is pretty simple. There is nothing like composer update. You wi
 #### Screenshots
 ![Main page](/view/image/image-1.png), ![Submission form](/view/image/image-2.png)
 
+#### NB: If you face any issue, please inform me. 
+
 
